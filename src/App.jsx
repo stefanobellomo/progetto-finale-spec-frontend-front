@@ -1,15 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { GlobalProvider } from "./context/GlobalContext";
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<DefaultLayout />}>
-          <Route path="/" element={<GamesList />} />
-          <Route path="/games/:id" element={<GameDetails />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <GlobalProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+            <Route path="/" element={<GamesList />} />
+            <Route path="/games/:id" element={<GameDetails />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </GlobalProvider>
   )
 }
