@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { GlobalContext } from "../context/GlobalContext"
+import { Link } from "react-router-dom"
 
 export default function GamesList() {
 
@@ -7,7 +8,15 @@ export default function GamesList() {
 
     return (
         <div>
-            lista giochi
+            {
+                games.map(g => (
+                    <div key={g.id}>
+                        <h4>Titolo: {g.title}</h4>
+                        <p>Categoria: {g.categoria}</p>
+                        <Link to={`/games/${g.id}`}>Dettaglio prodotto</Link>
+                    </div>
+                ))
+            }
         </div>
     )
 }
