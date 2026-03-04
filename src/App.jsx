@@ -1,5 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalProvider } from "./context/GlobalContext";
+import DefaultLayout from "./layouts/DefaultLayout";
+import GameDetails from "./pages/GameDetails";
+import GamesList from "./pages/GamesList";
 
 function App() {
 
@@ -16,3 +19,5 @@ function App() {
     </GlobalProvider>
   )
 }
+
+export default App
