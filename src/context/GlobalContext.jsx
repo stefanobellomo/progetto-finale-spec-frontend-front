@@ -10,6 +10,7 @@ export function GlobalProvider({ children }) {
     const [category, setCategory] = useState("All")
     const [sort, setSort] = useState("")
     const [compareList, setCompareList] = useState([])
+    const [favList, setFavList] = useState([])
 
     const fetchGames = async () => {
         try {
@@ -54,6 +55,8 @@ export function GlobalProvider({ children }) {
 
     }, [games, search, category, sort])
 
+
+    // funzione per il comparamento di due giochi
     const toggleCompare = async (game) => {
         try {
             const response = await fetch(`${apiurl}/games/${game.id}`)
@@ -75,8 +78,47 @@ export function GlobalProvider({ children }) {
         }
     }
 
+    // gestione della barra dei preferiti
+
+    const addFav = (game) => {
+        setFavList(prev => {
+            if (!prev.find(g => g.id === game.id)) {
+                return [...prev, game]
+            }
+            return prev
+        })
+    }
+
+    const removeFav = (id) => {
+        setFavList(prev => prev.filter(g => g.id !== id))
+    }
+
+    const isInFav = (id) => {
+        return favList.some(g => g.id === id)
+    }
+
+    const clearFav = () => {
+        setFavList([])
+    }
+
     return (
-        <GlobalContext.Provider value={{ games, filteredGames, search, setSearch, category, setCategory, sort, setSort, toggleCompare, compareList }}>
+        <GlobalContext.Provider value={{
+            games,
+            filteredGames,
+            search,
+            setSearch,
+            category,
+            setCategory,
+            sort,
+            setSort,
+            toggleCompare,
+            compareList,
+            favList,
+            addFav,
+            removeFav,
+            isInFav,
+            clearFav
+        }}>
             {children}
         </GlobalContext.Provider>
     )

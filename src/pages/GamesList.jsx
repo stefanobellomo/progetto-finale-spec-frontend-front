@@ -4,7 +4,20 @@ import CardMainPage from "../components/CardMainPage"
 
 export default function GamesList() {
 
-    const { filteredGames, category, setCategory, search, setSearch, sort, setSort, toggleCompare, compareList } = useContext(GlobalContext)
+    const {
+        filteredGames,
+        category,
+        setCategory,
+        search,
+        setSearch,
+        sort,
+        setSort,
+        toggleCompare,
+        compareList,
+        addFav,
+        removeFav,
+        isInFav
+    } = useContext(GlobalContext)
 
     return (
         <div>
@@ -35,7 +48,13 @@ export default function GamesList() {
             {
                 filteredGames && filteredGames.map(g => (
                     <div key={g.id}>
-                        <CardMainPage g={g} toggleCompare={toggleCompare} compareList={compareList} />
+                        <CardMainPage
+                            g={g}
+                            toggleCompare={toggleCompare}
+                            compareList={compareList}
+                            addFav={addFav}
+                            removeFav={removeFav}
+                            isInFav={isInFav} />
                     </div>
                 ))
             }
