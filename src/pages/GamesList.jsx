@@ -4,7 +4,7 @@ import CardMainPage from "../components/CardMainPage"
 
 export default function GamesList() {
 
-    const { games, filteredGames, category, setCategory, search, setSearch } = useContext(GlobalContext)
+    const { filteredGames, category, setCategory, search, setSearch, sort, setSort } = useContext(GlobalContext)
 
     return (
         <div>
@@ -23,7 +23,14 @@ export default function GamesList() {
                     <option value="Indie">Indie</option>
                     <option value="Multiplayer">Multiplayer</option>
                 </select>
-                <button></button>
+                <select
+                    value={sort}
+                    onChange={e => setSort(e.target.value)}
+                >
+                    <option value="">Nessun ordinamento</option>
+                    <option value="title">Titolo A-Z</option>
+                    <option value="category">Categoria A-Z</option>
+                </select>
             </div>
             {
                 filteredGames && filteredGames.map(g => (

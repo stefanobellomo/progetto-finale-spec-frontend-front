@@ -8,6 +8,7 @@ export function GlobalProvider({ children }) {
     const [games, setGames] = useState([])
     const [search, setSearch] = useState("")
     const [category, setCategory] = useState("All")
+    const [sort, setSort] = useState("")
 
     const fetchGames = async () => {
         try {
@@ -24,7 +25,8 @@ export function GlobalProvider({ children }) {
     }, [])
 
     const filteredGames = useMemo(() => {
-        return games.filter(g => {
+
+        let result = games.filter(g => {
             const matchSearch = g.title
                 .toLowerCase()
                 .includes(search.toLowerCase())
@@ -34,10 +36,25 @@ export function GlobalProvider({ children }) {
 
             return matchSearch && matchCategory
         })
-    }, [games, search, category])
+
+        if (sort === "title") {
+            result = [...result].sort((a, b) =>
+                a.title.localeCompare(b.title)
+            )
+        }
+
+        if (sort === "category") {
+            result = [...result].sort((a, b) =>
+                a.category.localeCompare(b.category)
+            )
+        }
+
+        return result
+
+    }, [games, search, category, sort])
 
     return (
-        <GlobalContext.Provider value={{ games, filteredGames, search, setSearch, category, setCategory }}>
+        <GlobalContext.Provider value={{ games, filteredGames, search, setSearch, category, setCategory, sort, setSort }}>
             {children}
         </GlobalContext.Provider>
     )
