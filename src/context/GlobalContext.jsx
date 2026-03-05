@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useMemo } from "react";
 const apiurl = import.meta.env.VITE_API_URL
 
 export const GlobalContext = createContext()
@@ -6,6 +6,8 @@ export const GlobalContext = createContext()
 export function GlobalProvider({ children }) {
 
     const [games, setGames] = useState([])
+    const [search, setSearch] = useState("")
+    const [category, setCategory] = useState("All")
 
     const fetchGames = async () => {
         try {
@@ -21,8 +23,21 @@ export function GlobalProvider({ children }) {
         fetchGames()
     }, [])
 
+    const filteredGames = useMemo(() => {
+        return games.filter(g => {
+            const matchSearch = g.title
+                .toLowerCase()
+                .includes(search.toLowerCase())
+
+            const matchCategory =
+                category === "All" || g.category === category
+
+            return matchSearch && matchCategory
+        })
+    }, [games, search, category])
+
     return (
-        <GlobalContext.Provider value={{ games }}>
+        <GlobalContext.Provider value={{ games, filteredGames, search, setSearch, category, setCategory }}>
             {children}
         </GlobalContext.Provider>
     )
