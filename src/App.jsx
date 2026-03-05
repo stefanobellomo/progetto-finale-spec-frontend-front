@@ -3,6 +3,7 @@ import { GlobalProvider } from "./context/GlobalContext";
 import DefaultLayout from "./layouts/DefaultLayout";
 import GameDetails from "./pages/GameDetails";
 import GamesList from "./pages/GamesList";
+import Favourites from "./pages/Favourites";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
           <Route element={<DefaultLayout />}>
             <Route path="/" element={<GamesList />} />
             <Route path="/games/:id" element={<GameDetails />} />
+            <Route path="/favourites" element={<Favourites />} />
           </Route>
         </Routes>
       </BrowserRouter>

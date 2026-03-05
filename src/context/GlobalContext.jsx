@@ -9,6 +9,7 @@ export function GlobalProvider({ children }) {
     const [search, setSearch] = useState("")
     const [category, setCategory] = useState("All")
     const [sort, setSort] = useState("")
+    const [compareList, setCompareList] = useState([])
 
     const fetchGames = async () => {
         try {
@@ -53,8 +54,29 @@ export function GlobalProvider({ children }) {
 
     }, [games, search, category, sort])
 
+    const toggleCompare = async (game) => {
+        try {
+            const response = await fetch(`${apiurl}/games/${game.id}`)
+            const data = await response.json()
+            const fullGame = data.game
+
+            setCompareList(prev => {
+                if (prev.find(g => g.id === fullGame.id)) {
+                    return prev.filter(g => g.id !== fullGame.id)
+                }
+                if (prev.length >= 2) {
+                    return [prev[1], fullGame]
+                }
+                return [...prev, fullGame]
+            })
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
-        <GlobalContext.Provider value={{ games, filteredGames, search, setSearch, category, setCategory, sort, setSort }}>
+        <GlobalContext.Provider value={{ games, filteredGames, search, setSearch, category, setCategory, sort, setSort, toggleCompare, compareList }}>
             {children}
         </GlobalContext.Provider>
     )
