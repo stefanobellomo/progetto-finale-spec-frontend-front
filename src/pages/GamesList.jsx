@@ -20,13 +20,18 @@ export default function GamesList() {
     } = useContext(GlobalContext)
 
     return (
-        <div>
-            <div>
+        <div className="games-page">
+
+            {/* FILTRI */}
+            <div className="filters my-2">
+
                 <input
                     type="text"
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    placeholder="Cerca..." />
+                    placeholder="Cerca..."
+                />
+
                 <select
                     value={category}
                     onChange={e => setCategory(e.target.value)}
@@ -36,6 +41,7 @@ export default function GamesList() {
                     <option value="Indie">Indie</option>
                     <option value="Multiplayer">Multiplayer</option>
                 </select>
+
                 <select
                     value={sort}
                     onChange={e => setSort(e.target.value)}
@@ -44,26 +50,35 @@ export default function GamesList() {
                     <option value="title">Titolo A-Z</option>
                     <option value="category">Categoria A-Z</option>
                 </select>
+
             </div>
-            {
-                filteredGames && filteredGames.map(g => (
-                    <div key={g.id}>
-                        <CardMainPage
-                            g={g}
-                            toggleCompare={toggleCompare}
-                            compareList={compareList}
-                            addFav={addFav}
-                            removeFav={removeFav}
-                            isInFav={isInFav} />
-                    </div>
-                ))
-            }
+
+            {/* LISTA GIOCHI */}
+            <div className="games-grid">
+
+                {filteredGames && filteredGames.map(g => (
+                    <CardMainPage
+                        key={g.id}
+                        g={g}
+                        toggleCompare={toggleCompare}
+                        compareList={compareList}
+                        addFav={addFav}
+                        removeFav={removeFav}
+                        isInFav={isInFav}
+                    />
+                ))}
+
+            </div>
+
+            {/* CONFRONTO */}
             {compareList.length > 0 && (
                 <div className="compare-section">
+
                     <h2>Confronto</h2>
-                    <div>
+
+                    <div className="compare-grid">
                         {compareList.map(g => (
-                            <div key={g.id}>
+                            <div key={g.id} className="compare-card">
                                 <h3>{g.title}</h3>
                                 <p>Categoria: {g.category}</p>
                                 <p>Prezzo: {g.price}</p>
@@ -71,8 +86,10 @@ export default function GamesList() {
                             </div>
                         ))}
                     </div>
+
                 </div>
             )}
+
         </div>
     )
 }

@@ -57,6 +57,7 @@ export function GlobalProvider({ children }) {
 
 
     // funzione per il comparamento di due giochi
+
     const toggleCompare = async (game) => {
         try {
             const response = await fetch(`${apiurl}/games/${game.id}`)

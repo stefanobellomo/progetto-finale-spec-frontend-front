@@ -2,22 +2,30 @@ import { NavLink } from "react-router-dom";
 
 export default function Header() {
     return (
-        <nav
-            className="navbar navbar-expand-sm navbar-light">
-            <div className="container">
-                <div className="navbar-nav me-auto mt-2 mt-lg-0">
-                    <div className="nav-item">
-                        <NavLink to='/' className="navbar nav-link mx-2">
-                            Lista Giochi
-                        </NavLink>
-                    </div>
-                    <div className="nav-item">
-                        <NavLink to='/favourites' className="navbar nav-link mx-2">
-                            Preferiti
-                        </NavLink>
-                    </div>
+        <header className="site-header">
+            <nav className="navbar-custom">
+                <h1 className="logo">
+                    GamExperience
+                </h1>
+                <div className="nav-links">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive ? "nav-link active" : "nav-link"
+                        }
+                    >
+                        Lista Giochi
+                    </NavLink>
+                    <NavLink
+                        to="/favourites"
+                        className={({ isActive }) =>
+                            isActive ? "nav-link active" : "nav-link"
+                        }
+                    >
+                        Preferiti
+                    </NavLink>
                 </div>
-            </div>
-        </nav>
-    )
+            </nav>
+        </header>
+    );
 }

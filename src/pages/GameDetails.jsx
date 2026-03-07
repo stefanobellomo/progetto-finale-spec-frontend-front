@@ -26,7 +26,7 @@ export default function GamesDetails() {
             <div>
                 <div>
                     {game && (
-                        <CardDetailsPage />
+                        <CardDetailsPage game={game} />
                     )}
                 </div>
             </div>
