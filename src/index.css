@@ -72,10 +72,14 @@ img {
     align-items: center;
 }
 
+.link-logo {
+    text-decoration: none;
+}
+
 .logo {
-    color: var(--text);
-    font-size: 14px;
-    text-shadow: 0 0 5px var(--text), 0 0 10px var(--text);
+    color: var(--title);
+    text-shadow: 0 0 5px var(--title), 0 0 10px var(--accent);
+    font-size: 15px;
 }
 
 .nav-links {

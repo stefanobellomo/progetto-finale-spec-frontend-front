@@ -4,7 +4,7 @@ export default function Header() {
     return (
         <header className="site-header">
             <nav className="navbar-custom">
-                <Link to="/">
+                <Link className="link-logo" to="/">
                     <h1 className="logo">
                         GamExperience
                     </h1>

@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { GlobalContext } from "../context/GlobalContext"
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import CardMainPage from "../components/CardMainPage"
 
 function debounce(callback, delay) {
@@ -30,12 +30,22 @@ export default function GamesList() {
     } = useContext(GlobalContext)
 
     const [inputValue, setInputValue] = useState("")
+    const compareSectionRef = useRef(null)
 
     const debouncedSetSearch = useMemo(() => {
         return debounce((value) => {
             setSearch(value)
         }, 300)
     }, [setSearch])
+
+    useEffect(() => {
+        if (compareList.length > 0 && compareSectionRef.current) {
+            compareSectionRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            })
+        }
+    }, [compareList])
 
     return (
         <div className="games-page">
@@ -76,7 +86,7 @@ export default function GamesList() {
             </div>
 
             {/* LISTA GIOCHI */}
-            <div className="games-grid">
+            {filteredGames.length === 0 ? <p>Nessun gioco trovato...</p> : <div className="games-grid">
                 {filteredGames && filteredGames.map(g => (
                     <CardMainPage
                         key={g.id}
@@ -88,11 +98,11 @@ export default function GamesList() {
                         isInFav={isInFav}
                     />
                 ))}
-            </div>
+            </div>}
 
             {/* CONFRONTO */}
             {compareList.length > 0 && (
-                <div className="compare-section">
+                <div className="compare-section" ref={compareSectionRef}>
 
                     <h2>Confronto</h2>
 
