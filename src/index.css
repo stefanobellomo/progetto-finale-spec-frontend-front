@@ -184,7 +184,8 @@ img {
 
 /* Area dei bottoni della card */
 .card-buttons {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 48px;
     gap: 6px;
     width: 100%;
 }
@@ -211,7 +212,7 @@ img {
 
 /* Bottone preferiti: più stretto del bottone confronto */
 .fav-btn {
-    flex: 0 0 48px;
+    width: 48px;
     padding: 0;
     font-size: 14px;
 }
@@ -237,6 +238,30 @@ img {
 
 .details-link:hover {
     text-decoration: underline;
+}
+
+/* Bottone torna alla home nella pagina preferiti */
+.back-home-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    padding: 10px 14px;
+    background: #000;
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    box-shadow: 3px 3px 0px var(--accent);
+    text-decoration: none;
+    font-size: 10px;
+    transition: 0.2s;
+}
+
+.back-home-link:hover {
+    background: var(--secondary);
+    color: #000;
+
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--accent);
 }
 
 /* SEZIONE CONFRONTO                                                          */
@@ -593,7 +618,7 @@ img {
 }
 
 /* Smartphone */
-@media (max-width: 575px) {
+@media (max-width: 500px) {
     .games-grid {
         grid-template-columns: repeat(2, 1fr);
     }

@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { GlobalContext } from "../context/GlobalContext"
+import { Link } from "react-router-dom"
 import CardMainPage from "../components/CardMainPage"
 
 export default function GamesList() {
@@ -55,7 +56,6 @@ export default function GamesList() {
 
             {/* LISTA GIOCHI */}
             <div className="games-grid">
-
                 {filteredGames && filteredGames.map(g => (
                     <CardMainPage
                         key={g.id}
@@ -67,7 +67,6 @@ export default function GamesList() {
                         isInFav={isInFav}
                     />
                 ))}
-
             </div>
 
             {/* CONFRONTO */}

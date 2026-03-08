@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { GlobalContext } from "../context/GlobalContext"
+import { Link } from "react-router-dom"
 
 export default function Favourites() {
     const { favList, clearFav, removeFav } = useContext(GlobalContext)
@@ -36,6 +37,7 @@ export default function Favourites() {
                     </div>
                 </>
             )}
+            <Link className="back-home-link" to="/">Torna indietro</Link>
         </div>
     )
 }
