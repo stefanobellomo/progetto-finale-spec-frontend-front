@@ -51,7 +51,7 @@ export default function GamesList() {
         <div className="games-page">
 
             {/* FILTRI */}
-            <div className="filters my-2">
+            <div className="filters">
 
                 <input
                     type="text"

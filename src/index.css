@@ -41,10 +41,6 @@ body {
     font-family: var(--font-ui);
 }
 
-a {
-    color: inherit;
-}
-
 button,
 input,
 select {
@@ -93,7 +89,6 @@ img {
     font-size: 10px;
     padding: 6px 10px;
     border: 2px solid transparent;
-    transition: 0.2s;
 }
 
 .nav-link:hover {
@@ -157,7 +152,6 @@ img {
     align-items: center;
     gap: 10px;
     text-align: center;
-    transition: transform 0.15s ease;
 }
 
 .card-compact:hover {
@@ -305,7 +299,6 @@ img {
     flex-direction: column;
     gap: 12px;
     text-align: left;
-    transition: transform 0.15s ease;
 }
 
 .compare-card:hover {
@@ -408,7 +401,6 @@ img {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    transition: transform 0.15s ease;
 }
 
 .details-card:hover {
@@ -416,7 +408,7 @@ img {
     box-shadow: var(--shadow-hover);
 }
 
-/* Anche qui rompiamo le parole troppo lunghe */
+/* rompiamo le parole troppo lunghe */
 .details-card * {
     min-width: 0;
     max-width: 100%;
@@ -500,7 +492,6 @@ img {
     box-shadow: 3px 3px 0px var(--accent);
     text-decoration: none;
     font-size: 10px;
-    transition: 0.2s;
 }
 
 .back-link:hover {
@@ -547,7 +538,6 @@ img {
     box-shadow: 3px 3px 0px var(--secondary);
     font-size: 10px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .favourites-clear-btn:hover {
@@ -574,7 +564,6 @@ img {
     justify-content: space-between;
     align-items: center;
     gap: 15px;
-    transition: transform 0.15s ease;
 }
 
 .favourite-card:hover {
@@ -594,16 +583,13 @@ img {
     flex-shrink: 0;
     width: 42px;
     height: 42px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: #000;
     color: var(--secondary);
     border: 2px solid var(--secondary);
     cursor: pointer;
-    transition: 0.2s;
     font-size: 14px;
 }
 
@@ -614,14 +600,14 @@ img {
 
 /* RESPONSIVE                                                                 */
 
-/* Tablet: 3 card per riga nella home */
+/* pc */
 @media (max-width: 900px) {
     .games-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Smartphone */
+/* tablet */
 @media (max-width: 500px) {
     .games-grid {
         grid-template-columns: repeat(2, 1fr);
