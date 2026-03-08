@@ -1,7 +1,17 @@
 import { useContext } from "react"
 import { GlobalContext } from "../context/GlobalContext"
-import { Link } from "react-router-dom"
+import { useMemo, useState } from "react";
 import CardMainPage from "../components/CardMainPage"
+
+function debounce(callback, delay) {
+    let timer;
+    return (value) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            callback(value);
+        }, delay);
+    };
+}
 
 export default function GamesList() {
 
@@ -9,7 +19,6 @@ export default function GamesList() {
         filteredGames,
         category,
         setCategory,
-        search,
         setSearch,
         sort,
         setSort,
@@ -20,6 +29,14 @@ export default function GamesList() {
         isInFav
     } = useContext(GlobalContext)
 
+    const [inputValue, setInputValue] = useState("")
+
+    const debouncedSetSearch = useMemo(() => {
+        return debounce((value) => {
+            setSearch(value)
+        }, 300)
+    }, [setSearch])
+
     return (
         <div className="games-page">
 
@@ -28,8 +45,12 @@ export default function GamesList() {
 
                 <input
                     type="text"
-                    value={search}
-                    onChange={e => setSearch(e.target.value)}
+                    value={inputValue}
+                    onChange={(e) => {
+                        const value = e.target.value
+                        setInputValue(value)
+                        debouncedSetSearch(value)
+                    }}
                     placeholder="Cerca..."
                 />
 
