@@ -24,7 +24,6 @@ export default function Favourites() {
                         {favList.map(game => (
                             <div key={game.id} className="favourite-card">
                                 <div className="favourite-card-title">{game.title}</div>
-
                                 <button
                                     className="favourite-remove-btn"
                                     onClick={() => removeFav(game.id)}

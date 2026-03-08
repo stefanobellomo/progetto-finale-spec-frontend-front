@@ -38,6 +38,7 @@ export default function GamesList() {
         }, 300)
     }, [setSearch])
 
+    // funzione che ci permette di scrollare automaticamente
     useEffect(() => {
         if (compareList.length > 0 && compareSectionRef.current) {
             compareSectionRef.current.scrollIntoView({

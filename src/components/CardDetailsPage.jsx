@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
 export default function CardDetailsPage({ game }) {
+
     if (!game) return null
 
     return (

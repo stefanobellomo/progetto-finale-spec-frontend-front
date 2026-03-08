@@ -8,6 +8,8 @@ export default function CardMainPage({
     removeFav,
     addFav
 }) {
+
+    // verifichiamo che ci sia almeno un elemento da comparare
     const isCompared = compareList.some(c => c.id === g.id)
     const isFavourite = isInFav(g.id)
 

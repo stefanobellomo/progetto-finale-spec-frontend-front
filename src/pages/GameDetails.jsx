@@ -8,6 +8,7 @@ export default function GamesDetails() {
     const { id } = useParams()
     const [game, setGame] = useState(null)
 
+    // chiamata in cui recupero giochi e relativi dati
     const fetchDetails = async () => {
         try {
             const response = await fetch(`${apiurl}/games/${id}`)
@@ -17,6 +18,7 @@ export default function GamesDetails() {
             console.error(error)
         }
     }
+
     useEffect(() => {
         fetchDetails()
     }, [id])
