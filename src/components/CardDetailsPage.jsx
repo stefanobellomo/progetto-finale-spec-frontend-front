@@ -23,7 +23,7 @@ export default function CardDetailsPage({ game }) {
 
                     <div className="details-row">
                         <span className="details-label">Prezzo</span>
-                        <span className="details-value">{game.price ?? "N/A"}</span>
+                        <span className="details-value">{`${game.price}€` ?? "N/A"}</span>
                     </div>
 
                     <div className="details-row">

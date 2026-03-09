@@ -52,12 +52,17 @@ img {
     max-width: 100%;
 }
 
+main,
+footer {
+    padding: 10px;
+}
+
 /* NAVBAR                                                                     */
 
 .site-header {
     background: rgba(0, 0, 0, 0.7);
     border-bottom: 3px solid var(--accent);
-    padding: 15px 0;
+    padding: 15px 10px;
 }
 
 .navbar-custom {
@@ -112,7 +117,7 @@ img {
     border: 3px solid var(--accent);
     padding: 20px;
     border-radius: 10px;
-    margin-bottom: 30px;
+    margin: 20px;
 }
 
 .filters input,

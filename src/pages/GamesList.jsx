@@ -110,7 +110,7 @@ export default function GamesList() {
 
                     <div className="compare-grid">
                         {compareList.map(g => (
-                            <CompareCard g={g} />
+                            <CompareCard key={g.id} g={g} />
                         ))}
                     </div>
 

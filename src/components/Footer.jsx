@@ -6,7 +6,7 @@ export default function Footer() {
                 © 2026 GameExperience — All rights reserved
             </span>
             <span className="footer-links">
-                Da un gamer per i gamer!
+                Da un gamer per gamer!
             </span>
         </footer>
     )
