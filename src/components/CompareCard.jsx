@@ -2,9 +2,18 @@ export default function CompareCard({ g }) {
     return (
         <div key={g.id} className="compare-card">
             <h3 className="game-title">{g.title}</h3>
-            <p>Categoria: {g.category}</p>
-            <p>Prezzo: {g.price}€</p>
-            <p>Valutazione: {g.rating}</p>
+            <div>
+                <span className="details-label">Categoria:</span>
+                <span className="details-value">{g.category}</span>
+            </div>
+            <div>
+                <span className="details-label">spanPrezzo:</span>
+                <span className="details-value">{g.price}€</span>
+            </div>
+            <div>
+                <span className="details-label">Valutazione:</span>
+                <span className="details-value">{g.rating}</span>
+            </div>
         </div>
     )
 }

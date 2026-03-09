@@ -85,7 +85,6 @@ footer {
 
 .nav-links {
     display: flex;
-    gap: 20px;
 }
 
 .nav-link {
@@ -765,5 +764,9 @@ footer {
 @media (max-width: 400px) {
     .games-grid {
         grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        margin-left: 10px;
     }
 }
