@@ -57,6 +57,23 @@ footer {
     padding: 10px;
 }
 
+html {
+    overflow-y: scroll;
+}
+
+/* contenitore */
+
+.contenitore {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    padding: 10px;
+}
+
 /* NAVBAR                                                                     */
 
 .site-header {
@@ -96,7 +113,6 @@ footer {
 }
 
 .nav-link:hover {
-    border-color: var(--accent);
     color: var(--accent);
 }
 
@@ -609,13 +625,10 @@ footer {
     padding: 20px;
     border-top: 3px solid var(--accent);
     background: rgba(0, 0, 0, 0.7);
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    flex-wrap: wrap;
-
     font-size: 10px;
     color: var(--text);
     text-align: center;

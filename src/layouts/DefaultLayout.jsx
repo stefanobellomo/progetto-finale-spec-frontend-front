@@ -5,10 +5,10 @@ import Footer from "../components/Footer"
 export default function DefaultLayout() {
 
     return (
-        <div className="container">
+        <div className="contenitore">
             <Header />
 
-            <main>
+            <main className="main-content">
                 <Outlet />
             </main>
 
