@@ -16,6 +16,8 @@ export function GlobalProvider({ children }) {
         return savedFav ? JSON.parse(savedFav) : []
     })
 
+
+    // chiamata per recuperare i dati della pagina principale
     const fetchGames = async () => {
         try {
             const response = await fetch(`${apiurl}/games`)
@@ -30,29 +32,22 @@ export function GlobalProvider({ children }) {
         fetchGames()
     }, [])
 
+    // filtri pagina
+
     const filteredGames = useMemo(() => {
 
         let result = games.filter(g => {
-            const matchSearch = g.title
-                .toLowerCase()
-                .includes(search.toLowerCase())
-
-            const matchCategory =
-                category === "All" || g.category === category
-
+            const matchSearch = g.title.toLowerCase().includes(search.toLowerCase())
+            const matchCategory = category === "All" || g.category === category
             return matchSearch && matchCategory
         })
 
         if (sort === "title") {
-            result = [...result].sort((a, b) =>
-                a.title.localeCompare(b.title)
-            )
+            result = [...result].sort((a, b) => a.title.localeCompare(b.title))
         }
 
         if (sort === "category") {
-            result = [...result].sort((a, b) =>
-                a.category.localeCompare(b.category)
-            )
+            result = [...result].sort((a, b) => a.category.localeCompare(b.category))
         }
 
         return result
