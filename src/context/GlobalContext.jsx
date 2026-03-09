@@ -74,7 +74,7 @@ export function GlobalProvider({ children }) {
                 return prev.filter(id => id !== game.id)
             }
 
-            if (prev.length >= 2) {
+            if (prev.length >= 4) {
                 return [prev[1], game.id]
             }
 
