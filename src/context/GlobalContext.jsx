@@ -55,7 +55,7 @@ export function GlobalProvider({ children }) {
     }, [games, search, category, sort])
 
 
-    // funzione per il comparamento di due giochi
+    // funzione per il comparamento di più giochi
 
     const fetchGameById = useCallback(async (id) => {
         const response = await fetch(`${apiurl}/games/${id}`)
