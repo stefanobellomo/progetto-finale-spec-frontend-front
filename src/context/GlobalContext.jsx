@@ -105,26 +105,26 @@ export function GlobalProvider({ children }) {
 
     // gestione della barra dei preferiti
 
-    const addFav = (game) => {
+    const addFav = useCallback((game) => {
         setFavList(prev => {
             if (!prev.find(g => g.id === game.id)) {
                 return [...prev, game]
             }
             return prev
         })
-    }
+    }, [])
 
-    const removeFav = (id) => {
+    const removeFav = useCallback((id) => {
         setFavList(prev => prev.filter(g => g.id !== id))
-    }
+    }, [])
 
-    const isInFav = (id) => {
-        return favList.some(g => g.id === id)
-    }
-
-    const clearFav = () => {
+    const clearFav = useCallback(() => {
         setFavList([])
-    }
+    }, [])
+
+    const isInFav = useCallback((id) => {
+        return favList.some(g => g.id === id)
+    }, [favList])
 
     useEffect(() => {
         localStorage.setItem("favourites", JSON.stringify(favList))

@@ -1,6 +1,6 @@
 import { useCallback, useContext } from "react"
 import { GlobalContext } from "../context/GlobalContext"
-import { useMemo, useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import CardMainPage from "../components/CardMainPage"
 import CompareCard from "../components/CompareCard";
 
@@ -39,6 +39,8 @@ export default function GamesList() {
     );
 
     // funzione che ci permette di scrollare automaticamente
+    // Ho usato useRef per ottenere un riferimento alla sezione di confronto nel DOM.Quando la lista dei giochi da confrontare cambia, tramite useEffect eseguo scrollIntoView su quell'elemento per far scorrere automaticamente la pagina verso la sezione di confronto.
+
     useEffect(() => {
         if (compareList.length > 0 && compareSectionRef.current) {
             compareSectionRef.current.scrollIntoView({
