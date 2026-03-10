@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useCallback, useContext } from "react"
 import { GlobalContext } from "../context/GlobalContext"
 import { useMemo, useState, useRef, useEffect } from "react";
 import CardMainPage from "../components/CardMainPage"
@@ -33,11 +33,10 @@ export default function GamesList() {
     const [inputValue, setInputValue] = useState("")
     const compareSectionRef = useRef(null)
 
-    const debouncedSetSearch = useMemo(() => {
-        return debounce((value) => {
-            setSearch(value)
-        }, 300)
-    }, [setSearch])
+    const debouncedSearch = useCallback(
+        debounce(setSearch, 500),
+        [setSearch]
+    );
 
     // funzione che ci permette di scrollare automaticamente
     useEffect(() => {
@@ -61,7 +60,7 @@ export default function GamesList() {
                     onChange={(e) => {
                         const value = e.target.value
                         setInputValue(value)
-                        debouncedSetSearch(value)
+                        debouncedSearch(value)
                     }}
                     placeholder="Cerca..."
                 />
