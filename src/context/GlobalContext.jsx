@@ -126,6 +126,8 @@ export function GlobalProvider({ children }) {
         return favList.some(g => g.id === id)
     }, [favList])
 
+    // localStorage
+
     useEffect(() => {
         localStorage.setItem("favourites", JSON.stringify(favList))
     }, [favList])

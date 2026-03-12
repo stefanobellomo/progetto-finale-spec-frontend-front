@@ -1,18 +1,9 @@
-import { useCallback, useContext } from "react"
+import { useContext } from "react"
 import { GlobalContext } from "../context/GlobalContext"
 import { useState, useRef, useEffect } from "react";
 import CardMainPage from "../components/CardMainPage"
 import CompareCard from "../components/CompareCard";
-
-function debounce(callback, delay) {
-    let timer;
-    return (value) => {
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            callback(value);
-        }, delay);
-    };
-}
+import useDebounce from "../hooks/useDebounce";
 
 export default function GamesList() {
 
@@ -33,10 +24,7 @@ export default function GamesList() {
     const [inputValue, setInputValue] = useState("")
     const compareSectionRef = useRef(null)
 
-    const debouncedSearch = useCallback(
-        debounce(setSearch, 500),
-        [setSearch]
-    );
+    const debouncedSearch = useDebounce(setSearch, 500)
 
     // funzione che ci permette di scrollare automaticamente
     // Ho usato useRef per ottenere un riferimento alla sezione di confronto nel DOM.Quando la lista dei giochi da confrontare cambia, tramite useEffect eseguo scrollIntoView su quell'elemento per far scorrere automaticamente la pagina verso la sezione di confronto.
