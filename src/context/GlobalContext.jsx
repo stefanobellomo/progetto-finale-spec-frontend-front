@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState, useMemo, useCallback } from "react";
+import useStorage from "../hooks/useStorage"
 const apiurl = import.meta.env.VITE_API_URL
 
 export const GlobalContext = createContext()
@@ -11,10 +12,7 @@ export function GlobalProvider({ children }) {
     const [sort, setSort] = useState("")
     const [compareIds, setCompareIds] = useState([])
     const [compareList, setCompareList] = useState([])
-    const [favList, setFavList] = useState(() => {
-        const savedFav = localStorage.getItem("favourites")
-        return savedFav ? JSON.parse(savedFav) : []
-    })
+    const [favList, setFavList] = useStorage("favourites", [])
 
 
     // chiamata per recuperare i dati della pagina principale
@@ -124,12 +122,6 @@ export function GlobalProvider({ children }) {
 
     const isInFav = useCallback((id) => {
         return favList.some(g => g.id === id)
-    }, [favList])
-
-    // localStorage
-
-    useEffect(() => {
-        localStorage.setItem("favourites", JSON.stringify(favList))
     }, [favList])
 
     return (
