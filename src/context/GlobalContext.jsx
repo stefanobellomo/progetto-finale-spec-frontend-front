@@ -19,6 +19,11 @@ export function GlobalProvider({ children }) {
     const fetchGames = async () => {
         try {
             const response = await fetch(`${apiurl}/games`)
+
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`)
+            }
+
             const data = await response.json()
             return setGames(data)
         } catch (error) {
@@ -56,14 +61,18 @@ export function GlobalProvider({ children }) {
     // funzione per il comparamento di più giochi
 
     const fetchGameById = useCallback(async (id) => {
-        const response = await fetch(`${apiurl}/games/${id}`)
+        try {
+            const response = await fetch(`${apiurl}/games/${id}`)
 
-        if (!response.ok) {
-            throw new Error(`Errore HTTP: ${response.status}`)
+            if (!response.ok) {
+                throw new Error(`Errore HTTP: ${response.status}`)
+            }
+
+            const data = await response.json()
+            return data.game
+        } catch (error) {
+            console.error('id non trovato')
         }
-
-        const data = await response.json()
-        return data.game
     }, [])
 
     const toggleCompare = useCallback((game) => {
