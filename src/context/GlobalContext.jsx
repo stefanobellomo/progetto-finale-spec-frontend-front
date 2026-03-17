@@ -82,7 +82,7 @@ export function GlobalProvider({ children }) {
             }
 
             if (prev.length >= 4) {
-                return [prev[1], game.id]
+                return [...prev.slice(1), game.id]
             }
 
             return [...prev, game.id]
