@@ -361,11 +361,6 @@ footer,
     border-top: 1px solid rgba(0, 255, 255, 0.25);
 }
 
-.compare-label,
-.details-label {
-    flex: 0 0 40%;
-}
-
 .compare-value,
 .details-value {
     flex: 1;
@@ -611,7 +606,6 @@ footer,
     .filters,
     .favourite-card,
     .compare-actions,
-    .compare-row,
     .details-row {
         flex-direction: column;
     }
