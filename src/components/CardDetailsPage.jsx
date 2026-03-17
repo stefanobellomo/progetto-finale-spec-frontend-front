@@ -12,13 +12,13 @@ export default function CardDetailsPage({ game }) {
                 </div>
 
                 <p className="game-desc">
-                    {game.description || "Descrizione non disponibile."}
+                    {game.description ?? "Descrizione non disponibile."}
                 </p>
 
                 <div className="details-info">
                     <div className="details-row">
                         <span className="details-label">Sviluppatori</span>
-                        <span className="details-value">{game.developer || "N/A"}</span>
+                        <span className="details-value">{game.developer ?? "N/A"}</span>
                     </div>
 
                     <div className="details-row">
