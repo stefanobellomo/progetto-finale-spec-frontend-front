@@ -82,8 +82,8 @@ export default function GamesList() {
                     <CardMainPage
                         key={g.id}
                         g={g}
+                        isCompared={compareList.some(c => c.id === g.id)}
                         toggleCompare={toggleCompare}
-                        compareList={compareList}
                         addFav={addFav}
                         removeFav={removeFav}
                         isInFav={isInFav}

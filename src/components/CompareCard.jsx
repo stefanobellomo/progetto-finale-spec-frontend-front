@@ -1,4 +1,6 @@
-export default function CompareCard({ g }) {
+import { memo } from "react"
+
+const CompareCard = memo(function CompareCard({ g }) {
     return (
         <div className="compare-card">
             <h3 className="compare-card-title">{g.title}</h3>
@@ -19,4 +21,4 @@ export default function CompareCard({ g }) {
             </div>
         </div>
     )
-}
+})

@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom"
+import { memo } from "react"
 
-export default function CardMainPage({
+const CardMainPage = memo(function CardMainPage({
     g,
+    isCompared, // 🔹 NUOVA PROP (prima arrivava compareList)
     toggleCompare,
-    compareList,
     isInFav,
     removeFav,
     addFav
 }) {
 
-    // verifichiamo che ci sia almeno un elemento da comparare
-    const isCompared = compareList.some(c => c.id === g.id)
     const isFavourite = isInFav(g.id)
 
     return (
@@ -48,4 +47,6 @@ export default function CardMainPage({
             </Link>
         </article>
     )
-}
+})
+
+export default CardMainPage
