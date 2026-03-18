@@ -22,3 +22,5 @@ const CompareCard = memo(function CompareCard({ g }) {
         </div>
     )
 })
+
+export default CompareCard
