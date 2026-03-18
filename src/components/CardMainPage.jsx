@@ -3,7 +3,7 @@ import { memo } from "react"
 
 const CardMainPage = memo(function CardMainPage({
     g,
-    isCompared, // 🔹 NUOVA PROP (prima arrivava compareList)
+    isCompared,
     toggleCompare,
     isInFav,
     removeFav,
