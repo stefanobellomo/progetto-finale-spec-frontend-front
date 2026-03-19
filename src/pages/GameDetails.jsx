@@ -4,7 +4,7 @@ import CardDetailsPage from "../components/CardDetailsPage"
 
 const apiurl = import.meta.env.VITE_API_URL
 
-export default function GamesDetails() {
+export default function GameDetails() {
     const { id } = useParams()
     const [game, setGame] = useState(null)
 
